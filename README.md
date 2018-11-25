@@ -1,9 +1,3 @@
-## Secret Escapes Exercise
+## HackerNews
 
-
-
-##### Steps to run the exercise
-
-1. Open the project in your preferred IDE.
-2. In terminal run: `npm install` and after that `npm start` .
-3. Navigate to your browser on http://localhost:8080/ if it doesn't go automatically.
+Repo that modifies a little the main page of https://news.ycombinator.com/ (HackerNews) by adding a more eye-pleasing version of the top 500 stories listed on HN.
