@@ -19,7 +19,7 @@ const styles = theme => ({
 });
 
 function Layout(props) {
-  const { classes, stories } = props;
+  const { classes } = props;
 
   return (
     <div className={classes.root}>
@@ -28,29 +28,31 @@ function Layout(props) {
   );
 }
 
-function getColumn(props) {
-  const { classes, stories } = props;
-  var indents = [];
 
+function getColumn(props) {
+  const { stories } = props;
+  var rowsArr = [];
+
+  //loop to create each row with 8 columns(stories)
   for(let i=0; i<stories.length; i=i+8) {
-    indents.push(
-      <Grid container spacing={24}>
+    rowsArr.push(
+      <Grid key={i} container spacing={24}>
         {columns(props, stories, i)}
       </Grid>
     )
   }
-  return indents
+  return rowsArr
 }
 
 function columns(props, stories, index) {
   const { classes } = props;
-  var indents = [];
+  var columnsArr = [];
 
   //loop to create 2 sets of 4 columns
   for(let i=0; i<4; i++ ) {
     //let j=i+4; 2nd way insted of setting "fixed" value 7-i
-    indents.push( 
-      <Grid container spacing={24} item xs={3}>
+    columnsArr.push( 
+      <Grid key={i} container spacing={24} item xs={3}>
         <Grid item xs={6}>
           <Paper className={classes.paper}> {<Story story={stories[index+i]} />} </Paper>
         </Grid>
@@ -60,7 +62,7 @@ function columns(props, stories, index) {
       </Grid>
     )
   }
-  return indents
+  return columnsArr
 }
 
 Layout.propTypes = {

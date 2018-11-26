@@ -20,7 +20,6 @@ class Story extends Component {
       //throwing an error when the response doesn’t match the expected data
       .then(response => {
         if (response.ok) {
-
           return response.json();
         } else {
           throw new Error('Something went wrong ...');
@@ -34,7 +33,7 @@ class Story extends Component {
       const { singleStory, error, isLoading } = this.state;
 
       if (!singleStory) {
-          return <p>No data to display yet ...</p>
+        return <p>No data to display yet ...</p>
       }
 
       //show the error message as conditional rendering again

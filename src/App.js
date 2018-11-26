@@ -8,11 +8,8 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.handleShowMore = this.handleShowMore.bind(this);
-
         this.state = {
             stories: [],
-            singleStory: {},
             isLoading: false,
             error: null, //When an error occurs gives to the end-user an indication about the error
         };
@@ -32,33 +29,6 @@ class App extends Component {
             })
             .then(data => this.setState({ stories: data, isLoading: false }))
             .catch(error => this.setState({ error, isLoading: false }));            
-    }
-
-    handleShowMore() {
-        this.setState({
-            showStories:
-                this.state.showStories >= this.state.Stories.length 
-                ?
-                    this.state.showStories 
-                :
-                    this.state.showStories + 30
-        })
-    }
-
-    getSingleStory(storyID) {
-        fetch(`https://hacker-news.firebaseio.com/v0/item/${storyID}.json`)
-            //throwing an error when the response doesn’t match the expected data
-            .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Something went wrong ...');
-            }
-            })
-            .then(data => {
-                return data.id
-            })
-            .catch(error => console.log(error));
     }
 
     render() {
